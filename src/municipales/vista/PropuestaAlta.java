@@ -152,9 +152,7 @@ public class PropuestaAlta extends JPanel {
 		txtCat.setBounds(200, 125, 86, 17);
 		add(txtCat);
 
-/*		JLabel lblNewLabel_2_1_1 = new JLabel("Texto Lüsqtoff");
-		lblNewLabel_2_1_1.setBounds(109, 213, 74, 14);
-		add(lblNewLabel_2_1_1);*/
+
 
 	}
 
