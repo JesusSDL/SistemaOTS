@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class DAO {
 
 	public Connection conectar() {
-		String url = "jdbc:mysql://localhost:3306/demoesi";
+		String url = "jdbc:mysql://localhost:3306/sistemaots";
 		String usr = "root";
-		String pass = "admin";
+		String pass = "Administrador.";
 		Connection c = null;
 		try {
 			c = DriverManager.getConnection(url, usr, pass);

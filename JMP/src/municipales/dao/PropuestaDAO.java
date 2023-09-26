@@ -20,7 +20,7 @@ public class PropuestaDAO extends DAO {
 		Connection c = null;
 		try {
 			c = conectar();
-			String sql = ("INSERT INTO propuesta (origenPropuesta, tituloPropuesta, categoria, breveDescripcion, autorPropuesta, fechaPropuesta, estadoPropuesta, textoLusqtoff) VALUES(?, ?, ?, ?, ?, ?, ?, ?)");
+			String sql = ("INSERT INTO propuesta (origenPropuesta, tituloPropuesta, categoria, breveDescripcion, autorPropuesta, fechaPropuesta, estadoPropuesta) VALUES(?, ?, ?, ?, ?, ?, ?)");
 
 			Date fecha = Date.valueOf(p.getFecha());
 			PreparedStatement pStmt = c.prepareStatement(sql);
@@ -33,7 +33,7 @@ public class PropuestaDAO extends DAO {
 			pStmt.setString(5, p.getAutor());
 			pStmt.setDate(6, fecha);
 			pStmt.setString(7, p.getEstado());
-			pStmt.setString(8, p.getTextoLusqtoff());
+
 
 			pStmt.executeUpdate();
 		} catch (SQLException ex) {
@@ -79,7 +79,7 @@ public class PropuestaDAO extends DAO {
 		Connection c = null;
 		try {
 			c = conectar();
-			String sql = ("UPDATE propuesta SET origenPropuesta = ?, tituloPropuesta = ? ,categoria = ?, breveDescripcion = ?, autorPropuesta = ?, fechaPropuesta = ?, estadoPropuesta = ?, motivoRechazo = ?, textoLusqtoff = ? WHERE idPropuesta = ?;");
+			String sql = ("UPDATE propuesta SET origenPropuesta = ?, tituloPropuesta = ? ,categoria = ?, breveDescripcion = ?, autorPropuesta = ?, fechaPropuesta = ?, estadoPropuesta = ?, motivoRechazo = ? WHERE idPropuesta = ?;");
 			PreparedStatement pStmt = c.prepareStatement(sql);
 
 			pStmt.setString(1, p.getOrigen());
@@ -91,8 +91,7 @@ public class PropuestaDAO extends DAO {
 			pStmt.setDate(6, fecha);
 			pStmt.setString(7, p.getEstado());
 			pStmt.setString(8, p.getMotivo());
-			pStmt.setString(9, p.getTextoLusqtoff());
-			pStmt.setInt(10, numeroPropuesta);
+			pStmt.setInt(9, numeroPropuesta);
 
 			pStmt.executeUpdate();
 
@@ -116,7 +115,7 @@ public class PropuestaDAO extends DAO {
 		Connection c = null;
 		try {
 			c = conectar();
-			String sql = ("SELECT idPropuesta,  origenPropuesta, tituloPropuesta, categoria, breveDescripcion, autorPropuesta, fechaPropuesta, estadoPropuesta, motivoRechazo, textoLusqtoff FROM propuesta");
+			String sql = ("SELECT idPropuesta,  origenPropuesta, tituloPropuesta, categoria, breveDescripcion, autorPropuesta, fechaPropuesta, estadoPropuesta, motivoRechazo FROM propuesta");
 			Statement stmt = c.createStatement();
 
 			ResultSet resultado = stmt.executeQuery(sql);
@@ -132,9 +131,9 @@ public class PropuestaDAO extends DAO {
 				LocalDate fecha = resultado.getDate("fechaPropuesta").toLocalDate();
 				String estado = resultado.getString("estadoPropuesta");
 				String motivo = resultado.getString("motivoRechazo");
-				String textoLusqtoff = resultado.getString("textoLusqtoff");
+				
 
-				Propuesta p = new Propuesta(id, origen, titulo, cat, descripcion, autor, fecha, estado, motivo, textoLusqtoff);
+				Propuesta p = new Propuesta(id, origen, titulo, cat, descripcion, autor, fecha, estado, motivo);
 				propuestas.add(p);
 			}
 

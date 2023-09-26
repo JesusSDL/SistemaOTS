@@ -44,7 +44,7 @@ public class PropuestaVerDetalle extends JPanel {
 	ArrayList<String> materialAsignado;
 	private Propuesta propuesta;
 	private JTextField txtNumeroPropuesta;
-	private JTextField txtTextoLusqtoff;
+	
 
 	public PropuestaVerDetalle() {
 		setLayout(null);
@@ -164,13 +164,12 @@ public class PropuestaVerDetalle extends JPanel {
 				LocalDate fechaRechazo = LocalDate.now();
 				String estadoRechazo = txtEstado.getText();
 				String motivoRechazo = txtMotivoRechazo.getText();
-				String textoLusqtoffRechazo = txtTextoLusqtoff.getText();
+				
 				int numeroPropuesta = Integer.parseInt(txtNumeroPropuesta.getText());
 
 				PropuestaDAO pDAO = new PropuestaDAO();
 				Propuesta propuestaRechazada = new Propuesta(origenRechazo, tituloRechazo, catRechazo,
-						descripcionRechazo, autorRechazo, fechaRechazo, estadoRechazo, motivoRechazo,
-						textoLusqtoffRechazo);
+						descripcionRechazo, autorRechazo, fechaRechazo, estadoRechazo, motivoRechazo);
 				pDAO.modificacion(propuestaRechazada, numeroPropuesta);
 				JFrame marco = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
 				marco.setContentPane(new PropuestaVer());
@@ -254,7 +253,7 @@ public class PropuestaVerDetalle extends JPanel {
 				LocalDate fechaAprobada = LocalDate.now();
 				String estadoAprobada = txtEstado.getText();
 				String motivoAprobada = txtMotivoRechazo.getText();
-				String textoLusqtoff = txtTextoLusqtoff.getText();
+
 				int numeroPropuesta = Integer.parseInt(txtNumeroPropuesta.getText());
 
 				MaterialesDAOC mDAOC = new MaterialesDAOC();
@@ -263,8 +262,7 @@ public class PropuestaVerDetalle extends JPanel {
 				mDAOC.asignarMatsPropuestas(materialAsignado, tituloAprobada);
 
 				Propuesta propuestaAprobada = new Propuesta(origenAprobada, tituloAprobada, catAprobada,
-						descripcionAprobada, autorAprobada, fechaAprobada, estadoAprobada, motivoAprobada,
-						textoLusqtoff);
+						descripcionAprobada, autorAprobada, fechaAprobada, estadoAprobada, motivoAprobada);
 				pDAO.modificacion(propuestaAprobada, numeroPropuesta);
 
 				JFrame marco = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
@@ -276,15 +274,7 @@ public class PropuestaVerDetalle extends JPanel {
 		btnConfirmarAprobacion.setBounds(530, 414, 127, 23);
 		add(btnConfirmarAprobacion);
 
-		JLabel lblTextoLsqtoff = new JLabel("Texto Lüsqtoff:");
-		lblTextoLsqtoff.setBounds(10, 417, 118, 14);
-		add(lblTextoLsqtoff);
-
-		txtTextoLusqtoff = new JTextField();
-		txtTextoLusqtoff.setEditable(false);
-		txtTextoLusqtoff.setColumns(10);
-		txtTextoLusqtoff.setBounds(138, 415, 86, 17);
-		add(txtTextoLusqtoff);
+		
 
 		// JListPropuestasAsoc.setModel(propuestasAsocDefaultList);
 
@@ -303,7 +293,7 @@ public class PropuestaVerDetalle extends JPanel {
 		txtFecha.setText("" + p.getFecha());
 		txtEstado.setText(p.getEstado());
 		txtMotivoRechazo.setText(p.getMotivo());
-		txtTextoLusqtoff.setText(p.getTextoLusqtoff());
+
 		txtNumeroPropuesta.setText("" + p.getId());
 
 		this.propuesta = p;

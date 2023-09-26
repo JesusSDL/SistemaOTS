@@ -60,7 +60,7 @@ public class Principal extends JPanel {
 		btnJornada.setBounds(184, 225, 164, 23);
 		add(btnJornada);
 		
-		JLabel lblNewLabel = new JLabel("~DEMOCESI~");
+		JLabel lblNewLabel = new JLabel("~SistemaOTS~");
 		lblNewLabel.setBackground(new Color(0, 191, 255));
 		lblNewLabel.setFont(new Font("Segoe Print", Font.BOLD, 22));
 		lblNewLabel.setBounds(184, 27, 164, 40);

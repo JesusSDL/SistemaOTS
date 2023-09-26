@@ -35,16 +35,12 @@ public class PropuestaAlta extends JPanel {
 	private ArrayList<Categoria> categorias;
 	private JComboBox txtCat = new JComboBox();
 	private JTextField txtNumeroPropuesta;
-	private JTextField txtTextoLusqtoff;
+
 
 	public PropuestaAlta() {
 		setLayout(null);
 		setLayout(null);
 
-		txtTextoLusqtoff = new JTextField();
-		txtTextoLusqtoff.setColumns(10);
-		txtTextoLusqtoff.setBounds(200, 210, 86, 20);
-		add(txtTextoLusqtoff);
 
 		txtOrigen.setModel(new DefaultComboBoxModel(new String[] { "Docente", "Estudiante" }));
 		txtOrigen.setBounds(200, 62, 86, 17);
@@ -94,20 +90,25 @@ public class PropuestaAlta extends JPanel {
 
 				String origen = (String) txtOrigen.getSelectedItem();
 				String titulo = txtTitulo.getText();
-				String cat = txtCat.getSelectedItem().toString();
+				
+				CategoriaDAO cDao = new CategoriaDAO();
+				int idCategoria = cDao.verCatsconF(txtCat.getSelectedItem().toString());
+				String cat = idCategoria;
+				 txtCat.getSelectedItem().toString();
+				
 				String descripcion = txtDescripcion.getText();
 				String autor = txtAutor.getText();
-				String textoLusqtoff = txtTextoLusqtoff.getText();
+				
 
 				PropuestaDAO pDAO = new PropuestaDAO();
 				if (esEdicion()) {
 					// modifica
 					int numeroPropuesta = Integer.parseInt(txtNumeroPropuesta.getText());
-					Propuesta propuesta = new Propuesta(origen, titulo, cat, descripcion, autor, fecha, textoLusqtoff);
+					Propuesta propuesta = new Propuesta(origen, titulo, cat, descripcion, autor, fecha);
 					pDAO.modificacion(propuesta, numeroPropuesta);
 				} else {
 					// Es un alta.
-					Propuesta propuesta = new Propuesta(origen, titulo, cat, descripcion, autor, fecha, textoLusqtoff);
+					Propuesta propuesta = new Propuesta(origen, titulo, cat, descripcion, autor, fecha);
 
 					pDAO.alta(propuesta);
 				}
@@ -156,9 +157,7 @@ public class PropuestaAlta extends JPanel {
 		txtCat.setBounds(200, 125, 86, 17);
 		add(txtCat);
 
-		JLabel lblNewLabel_2_1_1 = new JLabel("Texto Lüsqtoff");
-		lblNewLabel_2_1_1.setBounds(109, 213, 74, 14);
-		add(lblNewLabel_2_1_1);
+
 
 	}
 
@@ -180,7 +179,7 @@ public class PropuestaAlta extends JPanel {
 		txtDescripcion.setText(p.getDescripcion());
 		txtAutor.setText(p.getAutor());
 		LocalDate fecha = LocalDate.now();
-		txtTextoLusqtoff.setText(p.getTextoLusqtoff());
+		
 		txtNumeroPropuesta.setText("" + p.getId());
 
 		this.propuesta = p;
