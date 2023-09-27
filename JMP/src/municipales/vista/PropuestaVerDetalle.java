@@ -256,10 +256,10 @@ public class PropuestaVerDetalle extends JPanel {
 
 				int numeroPropuesta = Integer.parseInt(txtNumeroPropuesta.getText());
 
-				MaterialesDAOC mDAOC = new MaterialesDAOC();
+				/*MaterialesDAOC mDAOC = new MaterialesDAOC();
 
 				materialAsignado = (ArrayList<String>) JListAsignarMateriales.getSelectedValuesList();
-				mDAOC.asignarMatsPropuestas(materialAsignado, tituloAprobada);
+				mDAOC.asignarMatsPropuestas(materialAsignado, tituloAprobada);*/
 
 				Propuesta propuestaAprobada = new Propuesta(origenAprobada, tituloAprobada, catAprobada,
 						descripcionAprobada, autorAprobada, fechaAprobada, estadoAprobada, motivoAprobada);

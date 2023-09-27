@@ -70,6 +70,19 @@ public class Principal extends JPanel {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		lblNewLabel_1.setBounds(57, 84, 154, 14);
 		add(lblNewLabel_1);
+		
+		JButton btnReunion = new JButton("Reuniones");
+		btnReunion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame marco = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+				marco.setContentPane(new ReunionVer());
+				marco.validate();
+			}
+		});
+		btnReunion.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnReunion.setBackground(new Color(102, 153, 204));
+		btnReunion.setBounds(184, 271, 164, 23);
+		add(btnReunion);
 
 	}
 }

@@ -93,7 +93,7 @@ public class PropuestaAlta extends JPanel {
 				
 				CategoriaDAO cDao = new CategoriaDAO();
 				int idCategoria = cDao.verCatsconF(txtCat.getSelectedItem().toString());
-				String cat = idCategoria;
+				String cat = Integer.toString(idCategoria);
 				 txtCat.getSelectedItem().toString();
 				
 				String descripcion = txtDescripcion.getText();
