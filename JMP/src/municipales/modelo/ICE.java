@@ -7,7 +7,7 @@ public class ICE {
 	private int id;
 	private String nombreApe;
 	private String rol;
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 
 	public int getId() {
 		return id;
@@ -33,15 +33,15 @@ public class ICE {
 		this.rol = rol;
 	}
 
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public ICE(int id, String nombreApe, String rol, Date fechaNacimiento) {
+	public ICE(int id, String nombreApe, String rol, String fechaNacimiento) {
 		super();
 		this.id = id;
 		this.nombreApe = nombreApe;
@@ -51,5 +51,10 @@ public class ICE {
 	public ICE(String nombreApe) {
 		//p borrar
 		this.nombreApe = nombreApe;
+	}
+
+	public ICE(String nombreApellido, String fechaNac) {
+		this.nombreApe = nombreApellido;
+		this.fechaNacimiento =   fechaNac;
 	}
 }

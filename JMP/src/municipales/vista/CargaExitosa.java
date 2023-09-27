@@ -17,7 +17,7 @@ public class CargaExitosa extends JPanel {
 	public CargaExitosa() {
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Los datos se cargaron con éxito.");
+		JLabel lblNewLabel = new JLabel("los datos se han guardado correctamente");
 		lblNewLabel.setBounds(61, 60, 238, 58);
 		add(lblNewLabel);
 		

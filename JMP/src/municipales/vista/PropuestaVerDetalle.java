@@ -241,6 +241,8 @@ public class PropuestaVerDetalle extends JPanel {
 		txtNumeroPropuesta.setBounds(347, 21, 86, 20);
 		add(txtNumeroPropuesta);
 		txtNumeroPropuesta.setColumns(10);
+		
+		
 
 		btnConfirmarAprobacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

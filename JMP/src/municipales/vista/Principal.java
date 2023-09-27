@@ -63,10 +63,10 @@ public class Principal extends JPanel {
 		JLabel lblNewLabel = new JLabel("~SistemaOTS~");
 		lblNewLabel.setBackground(new Color(0, 191, 255));
 		lblNewLabel.setFont(new Font("Segoe Print", Font.BOLD, 22));
-		lblNewLabel.setBounds(184, 27, 164, 40);
+		lblNewLabel.setBounds(290, 30, 193, 40);
 		add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Elija lo que quiere ver:");
+		JLabel lblNewLabel_1 = new JLabel("Elija una opción:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		lblNewLabel_1.setBounds(57, 84, 154, 14);
 		add(lblNewLabel_1);
@@ -81,8 +81,36 @@ public class Principal extends JPanel {
 		});
 		btnReunion.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnReunion.setBackground(new Color(102, 153, 204));
-		btnReunion.setBounds(184, 271, 164, 23);
+		btnReunion.setBounds(426, 123, 164, 23);
 		add(btnReunion);
+		
+		JButton btnQuejas = new JButton("Quejas");
+		btnQuejas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame marco = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+				marco.setContentPane(new QuejaSubir());
+				marco.validate();
+			}
+		});
+		btnQuejas.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnQuejas.setBackground(new Color(102, 153, 204));
+		btnQuejas.setBounds(426, 178, 164, 23);
+		add(btnQuejas);
+		
+		JButton btnInscripcinClubes = new JButton("Inscripción Clubes");
+		btnInscripcinClubes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrame marco = (JFrame) SwingUtilities.getWindowAncestor((JComponent) e.getSource());
+				marco.setContentPane(new InscripcionClubAlta());
+				marco.validate();
+			}
+		});
+		btnInscripcinClubes.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnInscripcinClubes.setBackground(new Color(102, 153, 204));
+		btnInscripcinClubes.setBounds(426, 225, 164, 23);
+		add(btnInscripcinClubes);
+		
+		
 
 	}
 }

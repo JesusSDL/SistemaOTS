@@ -118,7 +118,7 @@ public class ReunionVer extends JPanel {
 
 		for (Reunion r : lasReuniones) {
 
-			Object[] fila = new Object[] { r.getTemaTratado() };
+			Object[] fila = new Object[] { r.getTemaTratado()};
 			dataModel.addRow(fila);
 
 		}
