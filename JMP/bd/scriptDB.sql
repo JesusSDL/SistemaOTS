@@ -8,32 +8,32 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema SistemaOTS
+-- Schema sistemaots
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema SistemaOTS
+-- Schema sistemaots
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `SistemaOTS` DEFAULT CHARACTER SET utf8mb3 ;
-USE `SistemaOTS` ;
+CREATE SCHEMA IF NOT EXISTS `sistemaots` DEFAULT CHARACTER SET utf8mb3 ;
+USE `sistemaots` ;
 
 -- -----------------------------------------------------
--- Table `SistemaOTS`.`categoria`
+-- Table `sistemaots`.`categoria`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SistemaOTS`.`categoria` (
+CREATE TABLE IF NOT EXISTS `sistemaots`.`categoria` (
   `idCATEGORIA` INT NOT NULL AUTO_INCREMENT,
   `NomCategoria` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idCATEGORIA`),
   UNIQUE INDEX `NomCategoria_UNIQUE` (`NomCategoria` ASC) VISIBLE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `SistemaOTS`.`propuesta`
+-- Table `sistemaots`.`propuesta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SistemaOTS`.`propuesta` (
+CREATE TABLE IF NOT EXISTS `sistemaots`.`propuesta` (
   `idPropuesta` INT NOT NULL AUTO_INCREMENT,
   `origenPropuesta` VARCHAR(65) NOT NULL,
   `tituloPropuesta` VARCHAR(45) NOT NULL,
@@ -47,16 +47,16 @@ CREATE TABLE IF NOT EXISTS `SistemaOTS`.`propuesta` (
   INDEX `idCATEGORIA_idx` (`categoria` ASC) VISIBLE,
   CONSTRAINT `categoriaPropuesta`
     FOREIGN KEY (`categoria`)
-    REFERENCES `SistemaOTS`.`categoria` (`idCATEGORIA`))
+    REFERENCES `sistemaots`.`categoria` (`idCATEGORIA`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 33
+AUTO_INCREMENT = 37
 DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `SistemaOTS`.`jornada`
+-- Table `sistemaots`.`jornada`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SistemaOTS`.`jornada` (
+CREATE TABLE IF NOT EXISTS `sistemaots`.`jornada` (
   `idJornada` INT NOT NULL AUTO_INCREMENT,
   `idPropuesta` INT NOT NULL,
   `refInstiJornada` VARCHAR(65) NOT NULL,
@@ -68,15 +68,15 @@ CREATE TABLE IF NOT EXISTS `SistemaOTS`.`jornada` (
   INDEX `fk_JORNADA_PROPUESTA_idx` (`idPropuesta` ASC) VISIBLE,
   CONSTRAINT `fk_JORNADA_PROPUESTA`
     FOREIGN KEY (`idPropuesta`)
-    REFERENCES `SistemaOTS`.`propuesta` (`idPropuesta`))
+    REFERENCES `sistemaots`.`propuesta` (`idPropuesta`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `SistemaOTS`.`material`
+-- Table `sistemaots`.`material`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SistemaOTS`.`material` (
+CREATE TABLE IF NOT EXISTS `sistemaots`.`material` (
   `idMaterial` INT NOT NULL AUTO_INCREMENT,
   `tituloMaterial` VARCHAR(45) NOT NULL,
   `categoriaMaterial` INT NOT NULL,
@@ -89,16 +89,16 @@ CREATE TABLE IF NOT EXISTS `SistemaOTS`.`material` (
   INDEX `categoriaMaterial_idx` (`categoriaMaterial` ASC) VISIBLE,
   CONSTRAINT `categoriaMaterial`
     FOREIGN KEY (`categoriaMaterial`)
-    REFERENCES `SistemaOTS`.`categoria` (`idCATEGORIA`))
+    REFERENCES `sistemaots`.`categoria` (`idCATEGORIA`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 105
+AUTO_INCREMENT = 106
 DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `SistemaOTS`.`material_jornada`
+-- Table `sistemaots`.`material_jornada`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SistemaOTS`.`material_jornada` (
+CREATE TABLE IF NOT EXISTS `sistemaots`.`material_jornada` (
   `MATERIAL_idMaterial` INT NOT NULL,
   `JORNADA_idJornada` INT NOT NULL,
   PRIMARY KEY (`MATERIAL_idMaterial`, `JORNADA_idJornada`),
@@ -106,18 +106,18 @@ CREATE TABLE IF NOT EXISTS `SistemaOTS`.`material_jornada` (
   INDEX `fk_MATERIAL_has_JORNADA_MATERIAL1_idx` (`MATERIAL_idMaterial` ASC) VISIBLE,
   CONSTRAINT `fk_MATERIAL_has_JORNADA_JORNADA1`
     FOREIGN KEY (`JORNADA_idJornada`)
-    REFERENCES `SistemaOTS`.`jornada` (`idJornada`),
+    REFERENCES `sistemaots`.`jornada` (`idJornada`),
   CONSTRAINT `fk_MATERIAL_has_JORNADA_MATERIAL1`
     FOREIGN KEY (`MATERIAL_idMaterial`)
-    REFERENCES `SistemaOTS`.`material` (`idMaterial`))
+    REFERENCES `sistemaots`.`material` (`idMaterial`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `SistemaOTS`.`material_propuesta`
+-- Table `sistemaots`.`material_propuesta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SistemaOTS`.`material_propuesta` (
+CREATE TABLE IF NOT EXISTS `sistemaots`.`material_propuesta` (
   `MATERIAL_idMaterial` INT NOT NULL,
   `PROPUESTA_idPropuesta` INT NOT NULL,
   PRIMARY KEY (`MATERIAL_idMaterial`, `PROPUESTA_idPropuesta`),
@@ -125,10 +125,10 @@ CREATE TABLE IF NOT EXISTS `SistemaOTS`.`material_propuesta` (
   INDEX `fk_MATERIAL_has_PROPUESTA_MATERIAL1_idx` (`MATERIAL_idMaterial` ASC) VISIBLE,
   CONSTRAINT `fk_MATERIAL_has_PROPUESTA_MATERIAL1`
     FOREIGN KEY (`MATERIAL_idMaterial`)
-    REFERENCES `SistemaOTS`.`material` (`idMaterial`),
+    REFERENCES `sistemaots`.`material` (`idMaterial`),
   CONSTRAINT `fk_MATERIAL_has_PROPUESTA_PROPUESTA1`
     FOREIGN KEY (`PROPUESTA_idPropuesta`)
-    REFERENCES `SistemaOTS`.`propuesta` (`idPropuesta`))
+    REFERENCES `sistemaots`.`propuesta` (`idPropuesta`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
